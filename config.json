@@ -6,7 +6,7 @@
   "experimental": {
     "clash_api": {
       "external_controller": "0.0.0.0:9090",
-      "secret": "875101040",
+      "secret": "123456",
       "default_mode": "rule"
     }
   },
@@ -57,16 +57,7 @@
         "auto",
         "🇭🇰 香港1 (移动>联通>电信)",
         "🇭🇰 香港2 (移动)",
-        "🇯🇵 日本1 (移动>电信>联通)",
-        "🇯🇵 日本2 (移动>电信>联通)",
-        "🇯🇵 日本3 (移动联通>电信)",
-        "🇰🇷 韩国 (移动>电信>联通)",
-        "🇸🇬 新加坡1 (三网)",
-        "🇸🇬 新加坡2 (移动联通>电信)",
-        "🇺🇸 美国1",
-        "🇺🇸 美国2",
-        "🇨🇦 加拿大",
-        "🇩🇪 德国1"
+
       ]
     },
     {
@@ -75,16 +66,7 @@
       "outbounds": [
         "🇭🇰 香港1 (移动>联通>电信)",
         "🇭🇰 香港2 (移动)",
-        "🇯🇵 日本1 (移动>电信>联通)",
-        "🇯🇵 日本2 (移动>电信>联通)",
-        "🇯🇵 日本3 (移动联通>电信)",
-        "🇰🇷 韩国 (移动>电信>联通)",
-        "🇸🇬 新加坡1 (三网)",
-        "🇸🇬 新加坡2 (移动联通>电信)",
-        "🇺🇸 美国1",
-        "🇺🇸 美国2",
-        "🇨🇦 加拿大",
-        "🇩🇪 德国1"
+
       ],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "5m",
@@ -101,9 +83,9 @@
     {
       "type": "vmess",
       "tag": "🇭🇰 香港1 (移动>联通>电信)",
-      "server": "hk1.jiedian.stream",
-      "server_port": 8443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
+      "server": "自己修改",
+      "server_port": 自己修改,
+      "uuid": "自己修改",
       "security": "auto",
       "tls": {
         "enabled": true,
@@ -114,9 +96,9 @@
     {
       "type": "vmess",
       "tag": "🇭🇰 香港2 (移动)",
-      "server": "hk2.jiedian.stream",
-      "server_port": 8443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
+      "server": "自己修改",
+      "server_port": 自己修改,
+      "uuid": "自己修改",
       "security": "auto",
       "tls": {
         "enabled": true,
@@ -124,135 +106,7 @@
         "insecure": true
       }
     },
-    {
-      "type": "vmess",
-      "tag": "🇯🇵 日本1 (移动>电信>联通)",
-      "server": "jp1.cndns.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇯🇵 日本2 (移动>电信>联通)",
-      "server": "jp2.cndns.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇯🇵 日本3 (移动联通>电信)",
-      "server": "jp3.jiedian.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇰🇷 韩国 (移动>电信>联通)",
-      "server": "kr.jiedian.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇸🇬 新加坡1 (三网)",
-      "server": "sg1.jiedian.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇸🇬 新加坡2 (移动联通>电信)",
-      "server": "sg2.jiedian.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇺🇸 美国1",
-      "server": "us1.jiedian.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇺🇸 美国2",
-      "server": "us2.jiedian.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇨🇦 加拿大",
-      "server": "ca.jiedian.stream",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇩🇪 德国1",
-      "server": "85.234.69.181",
-      "server_port": 443,
-      "uuid": "5c74b1dc-a03d-4b3d-9f94-8b334974524f",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
+
     }
   ],
   "route": {
