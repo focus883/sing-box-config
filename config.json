@@ -4,31 +4,39 @@
     "timestamp": true
   },
   "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "singbox-cache.db"
+    },
     "clash_api": {
       "external_controller": "0.0.0.0:9090",
-      "secret": "123456",
+      "secret": "0000",
       "default_mode": "rule"
     }
   },
   "dns": {
+    "strategy": "ipv4_only",
     "servers": [
       {
-        "type": "tls",
+        "type": "tcp",
         "tag": "dns-remote",
-        "server": "8.8.8.8",
-        "server_port": 853,
+        "server": "1.1.1.1",
         "detour": "proxy"
       },
       {
         "type": "udp",
         "tag": "dns-local",
         "server": "223.5.5.5",
-        "server_port": 53,
+        "server_port": 53
       }
     ],
     "rules": [
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": ["my-proxy-set"],
+        "server": "dns-remote"
+      },
+	 {
+        "rule_set": ["geosite-geolocation-!cn"],
         "server": "dns-remote"
       }
     ],
@@ -39,9 +47,7 @@
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "singbox-tun",
-      "address": [
-        "172.19.0.1/30"
-      ],
+      "address": ["172.19.0.1/30"],
       "auto_route": true,
       "auto_redirect": true,
       "strict_route": true,
@@ -52,85 +58,60 @@
     {
       "type": "selector",
       "tag": "proxy",
-      "default": "auto",
+      "default": "???? 日本3 (移动联通>电信)",
       "outbounds": [
-        "auto",
-        "🇭🇰 香港1 (移动>联通>电信)",
-        "🇭🇰 香港2 (移动)",
+        "???? 香港1 (移动>联通>电信)",
+        "???? 日本3 (移动联通>电信)",
 
       ]
     },
-    {
-      "type": "urltest",
-      "tag": "auto",
-      "outbounds": [
-        "🇭🇰 香港1 (移动>联通>电信)",
-        "🇭🇰 香港2 (移动)",
-
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
+    { "type": "direct", "tag": "direct" },
+    { "type": "block", "tag": "block" },
+    
     {
       "type": "vmess",
-      "tag": "🇭🇰 香港1 (移动>联通>电信)",
-      "server": "自己修改",
-      "server_port": 自己修改,
-      "uuid": "自己修改",
+      "tag": "???? 日本3 (移动联通>电信)",
+      "server": "XXXXXXXX",
+      "server_port": XXX,
+      "uuid": "XXXXXXXXX",
       "security": "auto",
       "tls": {
         "enabled": true,
         "server_name": "alicdn.com",
-        "insecure": true
+        "insecure": true,
+        "utls": { "enabled": true, "fingerprint": "chrome" }
       }
     },
-    {
-      "type": "vmess",
-      "tag": "🇭🇰 香港2 (移动)",
-      "server": "自己修改",
-      "server_port": 自己修改,
-      "uuid": "自己修改",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "alicdn.com",
-        "insecure": true
-      }
-    },
-
+    
+    }
   ],
   "route": {
     "auto_detect_interface": true,
     "default_domain_resolver": "dns-local",
     "rule_set": [
-      {
+    {
+        "type": "remote",
+        "tag": "my-proxy-set",
+        "format": "source",
+        "url": "https://raw.githubusercontent.com/focus883/sing-box-config/main/my-proxy.json",
+		"download_detour": "proxy"
+		"update_interval": "7d"
+    },
+	{
         "type": "remote",
         "tag": "geosite-geolocation-!cn",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
         "download_detour": "proxy"
+		"update_interval": "7d"
       }
     ],
     "rules": [
-      {
-        "protocol": "dns",
-        "action": "hijack-dns"
+	  {
+        "action": "sniff"
       },
       {
-        "ip_cidr": [
-          "10.0.0.0/8",
-          "172.16.0.0/12",
-          "192.168.0.0/16"
-        ],
+        "ip_cidr": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"],
         "outbound": "direct"
       },
       {
@@ -142,25 +123,11 @@
         "outbound": "proxy"
       },
       {
-        "domain_suffix": [
-          "openai.com",
-          "chatgpt.com",
-          "anthropic.com",
-          "claude.ai",
-          "youtube.com",
-          "googlevideo.com",
-          "ytimg.com",
-          "github.com",
-          "githubusercontent.com",
-          "telegram.org",
-          "groq.com",
-          "googleapis.com",
-          "t.me"
-        ],
+        "rule_set": ["my-proxy-set"],
         "outbound": "proxy"
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": ["geosite-geolocation-!cn"],
         "outbound": "proxy"
       }
     ],
